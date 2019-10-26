@@ -49,4 +49,3 @@ void P_Package::set_Bet(int bet_Val)
 	bet = bet_Val;
 	//send_package
 }
-
