@@ -1,47 +1,52 @@
-#ifndef BLACKJACK_ENCODING_HEADERFILE_H
-#define BLACKJACK_ENCODING_HEADERFILE_H
-
-#include <gtkmm.h>
+#include "blackjack_encoding_headerfile.h"
 #include <string>
+#include <queue>
 #include <map>
 #include <vector>
-#include <string>
+#include <gtkmm.h>
 
-using namespace std;
+// 0 - set username/funds, 1 = place bets, 2 = gameplay, 3 = savecards, 4 = continuance
 
-class Player_Info
-
-class P_Package
+void P_Package::set_Gameplay(bool Gameplay_ans) //player pressed hit or stand
 {
-	private:
-	int player_state = 0;
-	string username = "";
-	float funds = 0.0;
-	int bet = 0;
-	bool gameplay = false;
-	bool saveCards = false;
-	bool cont = false;
-	
-	public:
-	void set_Gameplay(bool Gameplay_ans);
-	void set_Save_Card();
-	void set_Continue(bool Cont_ans);
-	void set_User(string name, float fund_Val);
-	void set_Bet(int bet_Val);
-};
+	player_state = 2;
+	gameplay = Gameplay_ans;
+	//send_package
+}
 
-class D_Package
+void P_Package::set_Stand()
 {
-	private:
-	vector<string> player_Names;
-	vector<vector<char>> player_Cards;
-	vector<float> player_Funds;
-	vector<bool> player_endState;
-	vector<char> dealer_cards;
-	float dealer_Funds;
-	int game_State;
-	
-	public:
-};
+	player_state = 2;
+	stand = true;
+	//send_package
+}
 
-#endif
+void P_Package::set_Save_Card()
+{
+	player_state = 3;
+	saveCards = true;
+	//send_package
+}
+
+void P_Package::set_Continue(bool Cont_ans)
+{
+	player_state = 4;
+	cont = Cont_ans;
+	//send_package
+}
+
+void P_Package::set_User(string name, float fund_Val)
+{
+	player_state = 0;
+	username = name;
+	funds = fund_Val;
+	//send_package
+}
+
+void P_Package::set_Bet(int bet_Val)
+{
+	player_state = 1;
+	bet = bet_Val;
+	//send_package
+}
+
