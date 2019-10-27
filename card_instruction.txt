@@ -1,0 +1,38 @@
+Each card is going to be represented by a character.
+A character is just a 1 byte number.
+
+The order of representation is
+Spades = 0x10
+Hearts = 0x20
+Clubs = 0x30
+Diamonds = 0x40
+
+and ace through kings is just 1 through d
+1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d
+
+So an 3 of diamonds would be 0x43
+
+If you need to create a card for whatever reason, use
+SUIT | value
+where SUIT is one of the four suits and value would be the value of the card
+
+
+
+If you want to grab the value of a card, use
+
+card & 0x0F
+
+This is and-ing the character and 00001111, leaving only the value of the card
+
+
+
+To grab the suit use
+
+(card & 0xF0) >> 4
+
+This is and-ing the character and 11110000, and then shifting it over 4 bits, leaving a 1-4 number.
+
+
+
+
+If you have any questions about how to use cards you can ask me (Jonathan)
