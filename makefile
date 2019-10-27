@@ -1,1 +1,2 @@
-gcc `pkg-config --cflags gtk+-3.0` -o client blackjack_client.cpp `pkg-config --libs gtk+-3.0`
+ex: blackjack_client.cpp
+	g++ blackjack_client.cpp -o blackjack_client `pkg-config gtkmm-3.0 --cflags --libs`
