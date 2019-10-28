@@ -7,6 +7,7 @@ using namespace Gtk;
 using namespace Glib;
 int main(int argc, char *argv[])
 {
+  int x;
   auto app =
     Gtk::Application::create(argc, argv, "org.gtkmm.examples.base");
 
