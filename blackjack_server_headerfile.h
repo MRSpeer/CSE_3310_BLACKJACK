@@ -32,16 +32,22 @@
 using namespace std;
 
 class Shoe {
-	vector<char> Cards_In_Play;
-	char* deck_ptr = (char*) malloc(sizeof(char)*((DECKS_USED*4*13)));
 	public:
-	void shuffle();
-	void create_deck();
+	vector<char> Cards_In_Play;
+	int suits[4] = {SPADES, HEARTS, CLUBS, DIAMONDS};
+	char* deck_ptr = (char*) malloc(sizeof(char)*((DECKS_USED*52)+1)); //used for construction and printing
+	char* game_ptr = deck_ptr; //used to keep track of where the deck is during the game
+	//public:
+	void shuffle(); //implemented, but need to account for cards that have been played
+	void create_single_deck(char* ptr); //implemented
+	void create_shoe(); //implemented
+	void assert_deck(); //implemented
 	void fixed_shuffle_1();
 	void fixed_shuffle_2();
 	void fixed_shuffle_3();
-	void printdeck();
+	void printdeck(); //implemented
 	char deal_card();
+	void round_end(); //stuff for when a round ends
 	Shoe();
 	virtual ~Shoe();
 };
