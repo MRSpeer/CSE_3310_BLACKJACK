@@ -23,6 +23,9 @@ If you want to grab the value of a card, use
 card & 0x0F
 
 This is and-ing the character and 00001111, leaving only the value of the card
+As an example:
+
+0x43 & 0x0F = 0x03
 
 
 
@@ -31,6 +34,10 @@ To grab the suit use
 (card & 0xF0) >> 4
 
 This is and-ing the character and 11110000, and then shifting it over 4 bits, leaving a 1-4 number.
+As an example:
+
+0x43 & 0xF0 = 0x40
+0x40 >> 4 = 0x04
 
 
 
